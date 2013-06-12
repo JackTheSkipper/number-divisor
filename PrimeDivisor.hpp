@@ -1,5 +1,5 @@
-#ifndef PRIMEDIVISOR_H
-#define PRIMEDIVISOR_H
+#ifndef PRIMEDIVISOR_HPP
+#define PRIMEDIVISOR_HPP
 
 #include <iostream>
 #include <vector>

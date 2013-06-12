@@ -15,7 +15,7 @@ PrimeDivisor: PrimeDivisor.o aliquot.o
 PrimeDivisor.o: PrimeDivisor.cpp
 	$(CXX) -o PrimeDivisor.o -c PrimeDivisor.cpp $(CXXFLAGS)
 
-aliquot.o: aliquot.cpp PrimeDivisor.h
+aliquot.o: aliquot.cpp PrimeDivisor.hpp
 	$(CXX) -o aliquot.o -c aliquot.cpp $(CXXFLAGS)
 
 clean:

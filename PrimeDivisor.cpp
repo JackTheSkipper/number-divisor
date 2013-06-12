@@ -1,6 +1,6 @@
 #include <vector>
 #include <math.h>
-#include "PrimeDivisor.h"
+#include "PrimeDivisor.hpp"
 
 using namespace std;
 

@@ -4,7 +4,7 @@
 #include <time.h>
 #include <vector>
 
-#include "PrimeDivisor.h"
+#include "PrimeDivisor.hpp"
 
 using namespace std;
 
