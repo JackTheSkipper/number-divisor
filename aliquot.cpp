@@ -6,13 +6,15 @@
 
 #include "PrimeDivisor.hpp"
 
+//typedef unsigned long long int ullInt;
+
 using namespace std;
 
 int main()
 {
-  unsigned long long int n;
+  ullInt n;
   vector<PrimeDivisor> prime;
-  vector<long long int> alldiv, divsort;
+  vector<ullInt> alldiv, divsort;
   clock_t t;
   PrimeDivisor comp;
 
@@ -30,13 +32,13 @@ int main()
   t = clock();
     {
       prime=comp.prime_div(n);
-      int prod =1;
+      ullInt prod =1;
       int multi;
-      for(int i=0; i<prime.size();i++)
+      for(ullInt i=0; i<prime.size();i++)
 	{
 	  printf("*************************************\n");
-	  printf("prime[%d] = %lld\n",i,prime[i].getPrime());
-	  printf("multiplicity[%d] = %d\n",i,prime[i].getMulti());
+	  printf("prime[%lld] = %lld\n",i,prime[i].getPrime());
+	  printf("multiplicity[%lld] = %d\n",i,prime[i].getMulti());
 	  multi = prime[i].getMulti();
 	  prod=prod*(multi+1);
 	  }
@@ -44,8 +46,8 @@ int main()
       alldiv=comp.all_div(prime);
       divsort=comp.vec_inorder(alldiv);
       
-      int count=0;
-      for(int i=0; i<divsort.size();i++)
+      ullInt count=0;
+      for(ullInt i=0; i<divsort.size();i++)
        	{
        	  cout<<divsort[i]<<endl;
 	  count=count+divsort[i];

@@ -2,16 +2,18 @@
 #include <math.h>
 #include "PrimeDivisor.hpp"
 
+// typedef unsigned long long int ullInt;
+
 using namespace std;
 
 PrimeDivisor::PrimeDivisor() : prime(0), multiplicity(0)
 {}
 
-PrimeDivisor::PrimeDivisor(long long int prime, int multiplicity) : prime(prime) , multiplicity(multiplicity)
+PrimeDivisor::PrimeDivisor(ullInt prime, int multiplicity) : prime(prime) , multiplicity(multiplicity)
 {}
 
 
-void PrimeDivisor::setPrime(long long int prime)
+void PrimeDivisor::setPrime(ullInt prime)
 {
   this->prime = prime;
 }
@@ -21,7 +23,7 @@ void PrimeDivisor::setMulti(int multiplicity)
   this->multiplicity = multiplicity;
 }
 
-long long int PrimeDivisor::getPrime() const
+ullInt PrimeDivisor::getPrime() const
 {
   return this->prime;
 }
@@ -31,10 +33,10 @@ int PrimeDivisor::getMulti() const
   return this->multiplicity;
 }
 
-vector<PrimeDivisor> PrimeDivisor::prime_div(unsigned long long int num)
+vector<PrimeDivisor> PrimeDivisor::prime_div(ullInt num)
 {
   vector<PrimeDivisor> primdiv;
-  unsigned long long int racine;
+  ullInt racine;
   PrimeDivisor first,temp;
   int j;
   
@@ -45,7 +47,7 @@ vector<PrimeDivisor> PrimeDivisor::prime_div(unsigned long long int num)
   racine = floor(sqrt(num))+1;
   //cout<<"racine : "<< racine <<endl;
 
-  for(long long int i=2;i<=racine;i++)
+  for(ullInt i=2;i<=racine;i++)
     {
       while(num%i==0)
 	{
@@ -91,11 +93,11 @@ vector<PrimeDivisor> PrimeDivisor::prime_div(unsigned long long int num)
 }
 
 
-vector<long long int> PrimeDivisor::all_div(vector<PrimeDivisor> prime_gen)
+vector<ullInt> PrimeDivisor::all_div(vector<PrimeDivisor> prime_gen)
 {
-  vector<long long int> divisors_temp, divisors_all, divisors_order;
+  vector<ullInt> divisors_temp, divisors_all, divisors_order;
   int mul,a,div_size;
-  unsigned long long int p,mult,c;
+  ullInt p,mult,c;
 
   mul=prime_gen[0].getMulti();
   for(int j=0;j<=mul;j++)
@@ -108,7 +110,7 @@ vector<long long int> PrimeDivisor::all_div(vector<PrimeDivisor> prime_gen)
   
   div_size=divisors_temp.size();
 
-  for(int i=1 ; i<prime_gen.size();i++)
+  for(ullInt i=1 ; i<prime_gen.size();i++)
     {
       
       mul=prime_gen[i].getMulti();
@@ -136,15 +138,15 @@ vector<long long int> PrimeDivisor::all_div(vector<PrimeDivisor> prime_gen)
 }
 
 
-vector<int long long> PrimeDivisor::vec_inorder(vector<int long long> vec_to_order)
+vector<unsigned int long long> PrimeDivisor::vec_inorder(vector<unsigned int long long> vec_to_order)
 {
 
-  vector<long long int> vec_in_order;
-  vector<long long int>::iterator it;
-  unsigned long long int order;
+  vector<ullInt> vec_in_order;
+  vector<ullInt>::iterator it;
+  ullInt order;
   int tempsize;
 
-  for(int i=0; i<vec_to_order.size();i++)
+  for(ullInt i=0; i<vec_to_order.size();i++)
     {
      order = vec_to_order[i];
       if(vec_in_order.empty())
