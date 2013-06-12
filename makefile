@@ -1,20 +1,25 @@
 #!/usr/bin makefile 
 
+CXX=g++
+CXXFLAGS=-W -Wall -Wno-long-long -ansi -pedantic
+LDFLAGS=
+EXEC=PrimeDivisor
 
-all: PrimeDivisor
+
+
+all: $(EXEC)
 
 PrimeDivisor: PrimeDivisor.o aliquot.o
-	g++ -o PrimeDivisor PrimeDivisor.o aliquot.o
+	$(CXX) -o PrimeDivisor PrimeDivisor.o aliquot.o $(LDFLAGS)
 
 PrimeDivisor.o: PrimeDivisor.cpp
-	g++ -o PrimeDivisor.o -c PrimeDivisor.cpp -W -Wall -Wno-long-long -ansi -pedantic
+	$(CXX) -o PrimeDivisor.o -c PrimeDivisor.cpp $(CXXFLAGS)
 
 aliquot.o: aliquot.cpp PrimeDivisor.h
-	g++ -o aliquot.o -c aliquot.cpp -W -Wall -Wno-long-long -ansi -pedantic
-
+	$(CXX) -o aliquot.o -c aliquot.cpp $(CXXFLAGS)
 
 clean:
-	rm -rf *.o
+	rm -rf *.o *~
 
 mrproper: clean
-	rm -rf PrimeDivisor
+	rm -rf $(EXEC)
