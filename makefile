@@ -1,22 +1,22 @@
 #!/usr/bin makefile 
 
 CXX=g++
-CXXFLAGS=-W -Wall -Wno-long-long -ansi -pedantic
+CXXFLAGS=-W -Wall -Wno-long-long -pedantic
 LDFLAGS=
-EXEC=PrimeDivisor
-
-
+EXEC=NumDiv
+#SRC=PrimeDivisor.cpp aliquot.cpp
+#OBJ=$(SRC:.c=.o)
 
 all: $(EXEC)
 
-PrimeDivisor: PrimeDivisor.o aliquot.o
-	$(CXX) -o PrimeDivisor PrimeDivisor.o aliquot.o $(LDFLAGS)
+#NumDiv: $(OBJ)
+NumDiv: PrimeDivisor.o aliquot.o 
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
-PrimeDivisor.o: PrimeDivisor.cpp
-	$(CXX) -o PrimeDivisor.o -c PrimeDivisor.cpp $(CXXFLAGS)
+aliquot.o: PrimeDivisor.hpp
 
-aliquot.o: aliquot.cpp PrimeDivisor.hpp
-	$(CXX) -o aliquot.o -c aliquot.cpp $(CXXFLAGS)
+%.o: %.cpp
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 clean:
 	rm -rf *.o *~
